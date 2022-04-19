@@ -26,3 +26,17 @@
     border: 2px solid var(--color-secondary);
     background-color: var(--color-secondary);
 }
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.center {
+    justify-content: center;
+}
+
+.logo {
+    width: 5em;
+    height: 5em;
+}
