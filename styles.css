@@ -5,7 +5,7 @@
 
     --color-bg-main: #263739;
     --color-text: #e3f1f3;
-    --color-text-hl: #8b493e;
+    --color-text-hl: #b86354;
     --color-primary: #263739;
     --color-secondary: #2c4c64;
     --color-primary-comp: #97a9ac;
@@ -16,8 +16,6 @@ html {
     font-family: var(--main-font);
     color: var(--color-text);
     text-shadow: 1px 1px 2px black;
-
-    text-align: center;
 }
 
 body, section, h1, h2, h3, h4 {
@@ -41,8 +39,22 @@ h2 {
     font-size: 2rem;
 }
 
+h3 {
+    font-size: 1.75rem;
+}
+
+section {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 .intro {
     height: 100vh;
+
+    margin: 0 3rem 0 3rem;
 
     text-align: center;
 
@@ -74,8 +86,53 @@ h2 {
     background-color: var(--color-text);
 }
 
-.intro, .about, .projects, .contact {
-    border-bottom: 5px solid black;
-    height: 100vh;
-    width: 100%;
+.title {
+    padding: 2rem 0 1rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--color-text);
+
+    width: 4em;
+    height: max-content;
+}
+
+.subtitle {
+    padding: 0 1rem 0 1rem;
+    margin-bottom: 1.5rem;
+
+    color: var(--color-text-hl);
+
+    border-left: 2px solid var(--color-text-hl);
+    border-right: 2px solid var(--color-text-hl);
+}
+
+.about, .projects, .contact {
+    margin: 3rem;
+    background-color: var(--color-bg-main);
+    border-radius: .5rem;
+}
+
+.bio, .skills {
+    box-sizing: border-box;
+
+    line-height: 1.5;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (min-width: 900px) {
+    .bio, .skills {
+        width: 50%;
+        font-size: 1.25rem;
+    }
+}
+
+.skill {
+    margin: .5rem;
+    display: grid;
+    grid-template-rows: repeat(2, .75fr);
+    justify-content: center;
+    align-items: center;
 }

@@ -15,33 +15,79 @@
     <link rel="stylesheet" href="helper.css" />
   </head>
   <body>
-    <section class="intro">
-      <h1>Hello, I'm <span class="highlight">Kyle Wick</span>,</h1>
-      <h2>Software Developer.</h2>
-      <div class="intro-cta">
-        <button class="btn" id="viewWork">View My Work</button>
-        <!-- The Resume Link needs to be updated to download the actual resume, instead of this dummy template -->
-        <a
-          class="btn"
-          href="https://drive.google.com/uc?export=download&id=176ReVbO0mppCA5ekVfkkfL0Rb8QJMO9y"
-          download="SampleResume"
-          >Sample Resume</a
-        >
-      </div>
-      <div class="scroll-cta">
-        Scroll
-        <div class="scroll-cta-arw"></div>
-      </div>
-    </section>
-    <section class="about">
-      <h1>About</h1>
-    </section>
-    <section class="projects">
-      <h1>Projects</h1>
-    </section>
-    <section class="contact">
-      <h1>Contact</h1>
-    </section>
+    <header></header>
+    <main>
+      <section class="intro">
+        <h1>Hello, I'm <span class="highlight">Kyle Wick</span></h1>
+        <h2>Software Developer</h2>
+        <div class="intro-cta">
+          <button class="btn" id="viewWork">View My Work</button>
+          <!-- The Resume Link needs to be updated to download the actual resume, instead of this dummy template -->
+          <a
+            class="btn"
+            href="https://drive.google.com/uc?export=download&id=176ReVbO0mppCA5ekVfkkfL0Rb8QJMO9y"
+            download="SampleResume"
+            >Sample Resume</a
+          >
+        </div>
+        <div class="scroll-cta">
+          Scroll
+          <div class="scroll-cta-arw"></div>
+        </div>
+      </section>
+      <section class="about">
+        <div class="trans-bg"></div>
+        <h1 class="title">About</h1>
+        <div class="flex-wrap center">
+          <div class="bio">
+            <h3 class="subtitle">A Short Bio</h3>
+            <div class="bio-text">
+              I am a self-taught developer based in North Texas, focused on
+              building front-end applications and websites.
+              <br />
+              <br />
+              When I'm not coding, I enjoy playing video games and expressing my
+              creativity through drawing and 3D modelling.
+            </div>
+          </div>
+          <div class="skills">
+            <h3 class="subtitle">Current Skillset</h3>
+            <div class="flex-wrap center">
+              <div class="skill">
+                <img class="logo" src="./logos/html-logo.svg" alt="HTML Logo" />
+                HTML5
+              </div>
+              <div class="skill">
+                <img class="logo" src="./logos/css-logo.svg" alt="CSS Logo" />
+                CSS3
+              </div>
+              <div class="skill">
+                <img
+                  class="logo"
+                  src="./logos/js-logo.svg"
+                  alt="Javascript Logo"
+                />
+                Javascript
+              </div>
+              <div class="skill">
+                <img
+                  class="logo"
+                  src="./logos/react-logo.svg"
+                  alt="React JS Logo"
+                />
+                React
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="projects">
+        <h1 class="title">Projects</h1>
+      </section>
+      <section class="contact">
+        <h1 class="title">Contact</h1>
+      </section>
+    </main>
 
     <script src="./index.js"></script>
   </body>
