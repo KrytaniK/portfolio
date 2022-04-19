@@ -16,6 +16,8 @@ html {
     font-family: var(--main-font);
     color: var(--color-text);
     text-shadow: 1px 1px 2px black;
+
+    text-align: center;
 }
 
 body, section, h1, h2, h3, h4 {
@@ -24,6 +26,11 @@ body, section, h1, h2, h3, h4 {
 
 body {
     background: var(--intro-bg);
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
 }
 
 h1 {
@@ -65,4 +72,10 @@ h2 {
     height: 15vh;
 
     background-color: var(--color-text);
+}
+
+.intro, .about, .projects, .contact {
+    border-bottom: 5px solid black;
+    height: 100vh;
+    width: 100%;
 }
