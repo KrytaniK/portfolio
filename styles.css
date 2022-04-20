@@ -18,7 +18,7 @@ html {
     text-shadow: 1px 1px 2px black;
 }
 
-body, section, h1, h2, h3, h4 {
+body, section, h1, h2, h3, h4, p {
     margin: 0;
 }
 
@@ -29,6 +29,10 @@ body {
 
 a {
     text-decoration: none;
+}
+
+a:active {
+    color: var(--color-text);
 }
 
 h1 {
@@ -87,7 +91,7 @@ section {
 }
 
 .title {
-    padding: 2rem 0 1rem 0;
+    padding-bottom: 1rem;
     margin-bottom: 2rem;
     border-bottom: 2px solid var(--color-text);
 
@@ -106,7 +110,9 @@ section {
 }
 
 .about, .projects, .contact {
+    box-sizing: border-box;
     margin: 3rem;
+    padding: 2rem;
     background-color: var(--color-bg-main);
     border-radius: .5rem;
 }
@@ -135,4 +141,58 @@ section {
     grid-template-rows: repeat(2, .75fr);
     justify-content: center;
     align-items: center;
+}
+
+.projects-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 300px) {
+    .project {
+        width: 15rem;
+    }
+}
+
+.project {
+    justify-self: center;
+    align-self: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #2c4c6470;
+    border-radius: 5px;
+
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.project-title {
+    color: var(--color-text-hl);
+    padding: 0 1rem 0 1rem;
+
+    border-left: 1px solid var(--color-text-hl);
+    border-right: 1px solid var(--color-text-hl);
+}
+
+.project-image {
+    width: 50%;
+    margin: 1rem 0 1rem 0;
+}
+
+.project-links {
+    width: 100%;
+    margin-top: 1rem;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.project-links a {
+    margin: 0 1rem 0 1rem;
 }

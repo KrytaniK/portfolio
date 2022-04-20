@@ -6,5 +6,5 @@ viewWork.addEventListener('click', (event) => {
 
 function ScrollTo(className) {
     const element = document.querySelector(className);
-    element.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+    element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 }
