@@ -68,6 +68,12 @@ section {
     justify-content: center;
 }
 
+.intro-cta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .scroll-cta {
     display: flex;
     align-items: center;
