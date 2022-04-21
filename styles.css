@@ -113,8 +113,6 @@ section {
     box-sizing: border-box;
     margin: 3rem;
     padding: 2rem;
-    background-color: var(--color-bg-main);
-    border-radius: .5rem;
 }
 
 .bio, .skills {
@@ -195,4 +193,15 @@ section {
 
 .project-links a {
     margin: 0 1rem 0 1rem;
+}
+
+.contact {
+    flex-wrap: wrap;
+}
+
+.contact-logo {
+    width: 3rem;
+    height: 3rem;
+
+    margin: 1rem;
 }
