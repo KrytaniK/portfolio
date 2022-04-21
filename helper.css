@@ -2,6 +2,10 @@
     color: var(--color-text-hl);
 }
 
+.mute {
+    opacity: 60%;
+}
+
 .btn {
     margin: 1rem;
     background: none;
