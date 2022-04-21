@@ -1,0 +1,46 @@
+.highlight {
+    color: var(--color-text-hl);
+}
+
+.mute {
+    opacity: 60%;
+}
+
+.btn {
+    margin-top: 1rem;
+    background: none;
+    border: 2px solid var(--color-text);
+
+    text-shadow: inherit;
+
+    width: max-content;
+    height: max-content;
+
+    padding: .5rem 1rem;
+
+    font-family: var(--main-font);
+    font-size: 1.2rem;
+    color: var(--color-text);
+
+    transition: all .25s ease;
+}
+
+.btn:hover {
+    cursor: pointer;
+    border: 2px solid var(--color-secondary);
+    background-color: var(--color-secondary);
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.center {
+    justify-content: center;
+}
+
+.logo {
+    width: 5em;
+    height: 5em;
+}
