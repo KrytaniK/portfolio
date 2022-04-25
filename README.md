@@ -7,13 +7,11 @@ The aim of this project was to challenge myself to commit to a project that will
 to my future while learning a new technology -- Git.
 
 ### Challenges
-The main challenge for this project was learning and implementing Git into the project workflow.
-As an additional challenge, It was decided that a branching strategy be used to help keep development
-on track and to maintain a record of development.
+Learning Git and implementing it into a project workflow.
 
 ### What I Learned
-This project proved to be invaluable to me. Not only was I able to become more familiar with Git and the terminal,
-but implementing a branching strategy and keeping project structure helped me maintain the drive to finish the project.
+I was able to become more aquainted with Git and its interface, and learned common branching strategies used when
+using Git with a clear separation of concerns.
 
 ## Tech Used
 
