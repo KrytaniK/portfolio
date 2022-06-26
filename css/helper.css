@@ -1,46 +1,67 @@
-.highlight {
-    color: var(--color-text-hl);
+:root {
+    --c-bg-prim: #171717;
+    --c-bg-sec: #444444;
+    --c-bg-ter: #EDEDED;
 }
 
-.mute {
-    opacity: 60%;
+@font-face {
+    font-family: Ikaros;
+    src: url('../fonts/Ikaros.otf') format('opentype');
 }
 
-.btn {
-    margin-top: 1rem;
-    background: none;
-    border: 2px solid var(--color-text);
-
-    text-shadow: inherit;
-
-    width: max-content;
-    height: max-content;
-
-    padding: .5rem 1rem;
-
-    font-family: var(--main-font);
-    font-size: 1.2rem;
-    color: var(--color-text);
-
-    transition: all .25s ease;
+@font-face {
+    font-family: LeonSans-Bold;
+    src: url('../fonts/LeonSans-Bold.otf') format('opentype');
 }
 
-.btn:hover {
+@font-face {
+    font-family: LeonSans-Light;
+    src: url('../fonts/LeonSans-Light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: LeonSans-Medium;
+    src: url('../fonts/LeonSans-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: LeonSans-Regular;
+    src: url('../fonts/LeonSans-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: LeonSans-Thin;
+    src: url('../fonts/LeonSans-Thin.otf') format('opentype');
+}
+
+html {
+    font-size: 32px;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    background: 0;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
     cursor: pointer;
-    border: 2px solid var(--color-secondary);
-    background-color: var(--color-secondary);
 }
 
-.flex-wrap {
+.flex {
     display: flex;
-    flex-wrap: wrap;
 }
 
-.center {
-    justify-content: center;
+.flex-col {
+    display: flex;
+    flex-direction: column;
 }
 
-.logo {
-    width: 5em;
-    height: 5em;
+.grid {
+    display: grid;
 }
