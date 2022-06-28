@@ -40,11 +40,11 @@
           <h2 class="section-title">My Specialty</h2>
           <div class="skills flex-wrap">
             <div class="skill">
-              <img class="skill-img" src="" alt="" />
+              <img class="skill-img" src="./svgs/Logos/JS_Logo.svg" alt="" />
               <p class="subtext">JavaScript</p>
             </div>
             <div class="skill">
-              <img class="skill-img" src="" alt="" />
+              <img class="skill-img" src="./svgs/Logos/React-icon.svg" alt="" />
               <p class="subtext">React.js</p>
             </div>
           </div>
@@ -65,56 +65,122 @@
           <h2 class="section-title">I've Been Exposed To</h2>
           <div class="skills flex-wrap">
             <div class="skill">
-              <img class="skill-img" src="" alt="" />
+              <img
+                class="skill-img"
+                src="./svgs/Logos/MongoDB_Logo_Simple.svg"
+                alt="Mongo D B Logo"
+              />
               <p class="subtext">MongoDB</p>
             </div>
             <div class="skill">
-              <img class="skill-img" src="" alt="" />
+              <img
+                class="skill-img"
+                src="./svgs/Logos/node-js-white.svg"
+                alt=""
+              />
               <p class="subtext">Node.js</p>
             </div>
           </div>
         </div>
       </section>
       <h2 class="section-title">My Favorite Projects</h2>
-      <section class="projects b-grey">
-        <div class="project-card">
+      <section class="projects grid">
+        <div class="project-card b-grey">
           <h2 class="project-title">Project Title</h2>
-          <img src="" alt="" class="project-img" />
+          <img
+            src="./images/Capture.PNG"
+            alt="Project Demo Image"
+            class="project-img"
+          />
           <p class="text-desc">
             This project is a project to showcase that it is indeed a project to
             project the ideas of this project into a contained cell inside of
             another project that may or may not be a project.
           </p>
-          <p class="subtext muted">
+          <p class="subtext">
             Role: Designer / Developer
             <br />
             Tech Used: HTML, CSS, JavaScript, React
           </p>
-          <div class="project-links">
-            <button class="project-link b-blue">Code</button>
-            <button class="project-link b-red">Live Site</button>
-            <button class="project-link b-blue">Design</button>
+          <div class="project-links flex">
+            <button class="project-link b-shadow b-blue">Code</button>
+            <button class="project-link b-shadow b-red">Live Site</button>
+            <button class="project-link b-shadow b-blue">Design</button>
+          </div>
+        </div>
+        <div class="project-card b-grey">
+          <h2 class="project-title">Project Title</h2>
+          <img
+            src="./images/Capture.PNG"
+            alt="Project Demo Image"
+            class="project-img"
+          />
+          <p class="text-desc">
+            This project is a project to showcase that it is indeed a project to
+            project the ideas of this project into a contained cell inside of
+            another project that may or may not be a project.
+          </p>
+          <p class="subtext">
+            Role: Designer / Developer
+            <br />
+            Tech Used: HTML, CSS, JavaScript, React
+          </p>
+          <div class="project-links flex">
+            <button class="project-link b-shadow b-blue">Code</button>
+            <button class="project-link b-shadow b-red">Live Site</button>
+            <button class="project-link b-shadow b-blue">Design</button>
+          </div>
+        </div>
+        <div class="project-card b-grey">
+          <h2 class="project-title">Project Title</h2>
+          <img
+            src="./images/Capture.PNG"
+            alt="Project Demo Image"
+            class="project-img"
+          />
+          <p class="text-desc">
+            This project is a project to showcase that it is indeed a project to
+            project the ideas of this project into a contained cell inside of
+            another project that may or may not be a project.
+          </p>
+          <p class="subtext">
+            Role: Designer / Developer
+            <br />
+            Tech Used: HTML, CSS, JavaScript, React
+          </p>
+          <div class="project-links flex">
+            <button class="project-link b-shadow b-blue">Code</button>
+            <button class="project-link b-shadow b-red">Live Site</button>
+            <button class="project-link b-shadow b-blue">Design</button>
           </div>
         </div>
       </section>
-      <section class="contact">
+      <section class="contact flex">
         <div class="contact-form-wrapper grid b-grey">
           <h2 class="section-title">Contact Me</h2>
           <div class="contact-info">
-            <p class="subtext muted">I would love to hear from you!</p>
-            <br />
-            <p class="subtext muted">You can also find me here</p>
-            <div class="social-links">
-              <img src="" alt="" class="social-link" />
-              <img src="" alt="" class="social-link" />
+            <p class="subtext">I would love to hear from you!</p>
+            <p class="subtext">You can also find me here</p>
+            <div class="social-links flex">
+              <img
+                src="./svgs/Logos/Github-logo.svg"
+                alt="Github Link"
+                class="social-link"
+              />
+              <img
+                src="./svgs/Logos/LinkedIn-Logo.svg"
+                alt="Linked-In Link"
+                class="social-link"
+              />
             </div>
-            <p class="subtext muted">
+            <p class="subtext">
               Or, you can send me an email directly, at
+              <br />
               <br />
               wick.kyle@gmail.com
             </p>
           </div>
-          <form action="" class="contact-form">
+          <form action="" class="contact-form grid">
             <input
               type="text"
               name="name"
@@ -132,7 +198,7 @@
             <input
               type="text"
               name="Subject"
-              id="Subject"
+              id="subject"
               aria-activedescendant="Subject Matter Input"
               placeholder="Subject"
             />
@@ -144,7 +210,7 @@
               cols="30"
               rows="10"
             ></textarea>
-            <button class="form-submit b-blue">Send</button>
+            <button class="form-submit b-shadow b-blue">Send</button>
           </form>
         </div>
       </section>
@@ -153,6 +219,7 @@
       <p class="subtext">Self-Taugh, Self-Made</p>
       <p class="subtext muted">@2022 Kyle Wick</p>
     </footer>
+
     <script src="./js/index.js"></script>
     <script src="./js/particles.js"></script>
   </body>
