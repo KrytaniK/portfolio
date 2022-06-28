@@ -12,7 +12,6 @@
     />
 
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/helper.css" />
   </head>
   <body>
     <canvas id="bg-canvas"></canvas>
@@ -32,10 +31,128 @@
       </nav>
       <section class="hero flex-col">
         <h1 id="hero-name">Kyle Wick</h1>
-        <h4 id="hero-title" class="muted">FRONT-END DEV</h4>
+        <h4 id="hero-title" class="muted">Front-End Web Developer</h4>
       </section>
     </header>
-
+    <main>
+      <section class="about grid">
+        <div class="specialty">
+          <h2 class="section-title">My Specialty</h2>
+          <div class="skills flex-wrap">
+            <div class="skill">
+              <img class="skill-img" src="" alt="" />
+              <p class="subtext">JavaScript</p>
+            </div>
+            <div class="skill">
+              <img class="skill-img" src="" alt="" />
+              <p class="subtext">React.js</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-me">
+          <h2 class="section-title">What Am I About?</h2>
+          <p class="text">
+            I'm Kyle Wick, a
+            <span class="highlight">Front-End Web Developer</span> based in
+            North Texas. Fueled by my passion for art and technology, I am
+            always searching for new opportunites to bring creative energy into
+            my work. When I'm not building projects or researching, I spend a
+            lot of my time relaxing and improving my artistic capability through
+            sketching, and occasionally, 3D-Modelling.
+          </p>
+        </div>
+        <div class="exposure">
+          <h2 class="section-title">I've Been Exposed To</h2>
+          <div class="skills flex-wrap">
+            <div class="skill">
+              <img class="skill-img" src="" alt="" />
+              <p class="subtext">MongoDB</p>
+            </div>
+            <div class="skill">
+              <img class="skill-img" src="" alt="" />
+              <p class="subtext">Node.js</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <h2 class="section-title">My Favorite Projects</h2>
+      <section class="projects b-grey">
+        <div class="project-card">
+          <h2 class="project-title">Project Title</h2>
+          <img src="" alt="" class="project-img" />
+          <p class="text-desc">
+            This project is a project to showcase that it is indeed a project to
+            project the ideas of this project into a contained cell inside of
+            another project that may or may not be a project.
+          </p>
+          <p class="subtext muted">
+            Role: Designer / Developer
+            <br />
+            Tech Used: HTML, CSS, JavaScript, React
+          </p>
+          <div class="project-links">
+            <button class="project-link b-blue">Code</button>
+            <button class="project-link b-red">Live Site</button>
+            <button class="project-link b-blue">Design</button>
+          </div>
+        </div>
+      </section>
+      <section class="contact">
+        <div class="contact-form-wrapper grid b-grey">
+          <h2 class="section-title">Contact Me</h2>
+          <div class="contact-info">
+            <p class="subtext muted">I would love to hear from you!</p>
+            <br />
+            <p class="subtext muted">You can also find me here</p>
+            <div class="social-links">
+              <img src="" alt="" class="social-link" />
+              <img src="" alt="" class="social-link" />
+            </div>
+            <p class="subtext muted">
+              Or, you can send me an email directly, at
+              <br />
+              wick.kyle@gmail.com
+            </p>
+          </div>
+          <form action="" class="contact-form">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              aria-label="Name Input"
+              placeholder="Your Name"
+            />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              aria-label="Email Input"
+              placeholder="Your Email"
+            />
+            <input
+              type="text"
+              name="Subject"
+              id="Subject"
+              aria-activedescendant="Subject Matter Input"
+              placeholder="Subject"
+            />
+            <textarea
+              name="message"
+              id="message"
+              aria-label="Custom Message Input"
+              placeholder="Message"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <button class="form-submit b-blue">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p class="subtext">Self-Taugh, Self-Made</p>
+      <p class="subtext muted">@2022 Kyle Wick</p>
+    </footer>
     <script src="./js/index.js"></script>
     <script src="./js/particles.js"></script>
   </body>

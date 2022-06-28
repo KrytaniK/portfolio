@@ -2,6 +2,8 @@
     --c-bg-prim: #171717;
     --c-bg-sec: #444444;
     --c-bg-ter: #EDEDED;
+    --c-acc-blue: #00B3DA;
+    --c-acc-red: #DA0037;
 }
 
 @font-face {
@@ -36,6 +38,8 @@
 
 html {
     font-size: 32px;
+    color: var(--c-bg-ter);
+    text-align: center;
 }
 
 body, h1, h2, h3, h4, h5, h6 {
@@ -57,6 +61,11 @@ button {
     display: flex;
 }
 
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .flex-col {
     display: flex;
     flex-direction: column;
@@ -64,4 +73,35 @@ button {
 
 .grid {
     display: grid;
+}
+
+.b-blue {
+    border: 2px solid var(--c-acc-blue);
+    border-radius: 5px;
+}
+
+.b-red {
+    border: 2px solid var(--c-acc-red);
+    border-radius: 5px;
+}
+
+.b-grey {
+    border: 2px solid var(--c-bg-sec);
+    border-radius: 5px;
+}
+
+.highlight {
+    color: var(--c-acc-blue);
+}
+
+.section-title {
+    font-family: LeonSans-Bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.text {
+    font-family: LeonSans-Regular;
+    line-height: 2;
+    font-size: .75em;
 }
