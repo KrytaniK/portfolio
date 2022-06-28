@@ -128,7 +128,6 @@ input:focus, textarea:focus {
 .section-title {
     font-family: LeonSans-Bold;
     text-transform: uppercase;
-    letter-spacing: 5px;
 }
 
 .text {
