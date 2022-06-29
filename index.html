@@ -15,8 +15,12 @@
   </head>
   <body>
     <canvas id="bg-canvas"></canvas>
-
     <header>
+      <!-- Background Settings | WIP -->
+      <!-- <div class="bg-settings">
+        <button><h3>Close</h3></button>
+      </div>
+      <button id="bg-settings-toggle">Background Settings</button> -->
       <nav class="navbar">
         <div class="hamburger"></div>
         <ul class="nav-items grid">
@@ -32,6 +36,13 @@
       <section class="hero flex-col">
         <h1 id="hero-name">Kyle Wick</h1>
         <h4 id="hero-title" class="muted">Front-End Web Developer</h4>
+        <a
+          href="https://docs.google.com/document/d/1Pn2qJCPeiTFbOAPJ6kbl1vFTlyAPLuWo5pBY5IwKV9s/export?format=pdf"
+          download="CV_Kyle_Wick"
+          class="b-shadow b-blue"
+          id="cv-download"
+          >CV</a
+        >
       </section>
     </header>
     <main>
@@ -58,7 +69,7 @@
             always searching for new opportunites to bring creative energy into
             my work. When I'm not building projects or researching, I spend a
             lot of my time relaxing and improving my artistic capability through
-            sketching, and occasionally, 3D-Modelling.
+            sketching, 3D Modelling, and, on occasion, game development.
           </p>
         </div>
         <div class="exposure">
@@ -83,76 +94,44 @@
           </div>
         </div>
       </section>
-      <h2 class="section-title">My Favorite Projects</h2>
-      <section class="projects grid">
-        <div class="project-card b-grey">
-          <h2 class="project-title">Project Title</h2>
-          <img
-            src="./images/Capture.PNG"
-            alt="Project Demo Image"
-            class="project-img"
-          />
-          <p class="text-desc">
-            This project is a project to showcase that it is indeed a project to
-            project the ideas of this project into a contained cell inside of
-            another project that may or may not be a project.
-          </p>
-          <p class="subtext">
-            Role: Designer / Developer
-            <br />
-            Tech Used: HTML, CSS, JavaScript, React
-          </p>
-          <div class="project-links flex-wrap">
-            <button class="project-link b-shadow b-blue">Code</button>
-            <button class="project-link b-shadow b-red">Live Site</button>
-            <button class="project-link b-shadow b-blue">Design</button>
+      <section class="projects">
+        <h2 class="section-title">My Favorite Projects</h2>
+        <div class="projects-wrapper grid">
+          <div></div>
+          <div class="project-card b-grey">
+            <h2 class="project-title">Portfolio Website</h2>
+            <img
+              src="./images/Capture.PNG"
+              alt="Project Demo Image"
+              class="project-img"
+            />
+            <p class="text-desc">
+              My first project outside of prototypes. The goal for this site was
+              to challenge my knowledge the fundamentals < (HTML, CSS, JS) >
+              while learning to use Git for version control.
+            </p>
+            <p class="subtext">
+              Role: Designer / Developer
+              <br />
+              Tech Used: HTML, CSS, JavaScript
+            </p>
+            <div class="project-links flex-wrap">
+              <a
+                href="https://github.com/KrytaniK/portfolio"
+                target="_blank"
+                class="project-link b-shadow b-blue"
+                >Code</a
+              >
+              <a href="/" class="project-link b-shadow b-red">Live Site</a>
+              <a
+                href="https://www.figma.com/file/Wm7HhFa1Gr1FKWHWiKyrIL/Portfolio-Website-Design?node-id=0%3A1"
+                target="_blank"
+                class="project-link b-shadow b-blue"
+                >Design</a
+              >
+            </div>
           </div>
-        </div>
-        <div class="project-card b-grey">
-          <h2 class="project-title">Project Title</h2>
-          <img
-            src="./images/Capture.PNG"
-            alt="Project Demo Image"
-            class="project-img"
-          />
-          <p class="text-desc">
-            This project is a project to showcase that it is indeed a project to
-            project the ideas of this project into a contained cell inside of
-            another project that may or may not be a project.
-          </p>
-          <p class="subtext">
-            Role: Designer / Developer
-            <br />
-            Tech Used: HTML, CSS, JavaScript, React
-          </p>
-          <div class="project-links flex-wrap">
-            <button class="project-link b-shadow b-blue">Code</button>
-            <button class="project-link b-shadow b-red">Live Site</button>
-            <button class="project-link b-shadow b-blue">Design</button>
-          </div>
-        </div>
-        <div class="project-card b-grey">
-          <h2 class="project-title">Project Title</h2>
-          <img
-            src="./images/Capture.PNG"
-            alt="Project Demo Image"
-            class="project-img"
-          />
-          <p class="text-desc">
-            This project is a project to showcase that it is indeed a project to
-            project the ideas of this project into a contained cell inside of
-            another project that may or may not be a project.
-          </p>
-          <p class="subtext">
-            Role: Designer / Developer
-            <br />
-            Tech Used: HTML, CSS, JavaScript, React
-          </p>
-          <div class="project-links flex-wrap">
-            <button class="project-link b-shadow b-blue">Code</button>
-            <button class="project-link b-shadow b-red">Live Site</button>
-            <button class="project-link b-shadow b-blue">Design</button>
-          </div>
+          <div></div>
         </div>
       </section>
       <section class="contact flex">
@@ -180,37 +159,54 @@
               wick.kyle@gmail.com
             </p>
           </div>
-          <form action="" class="contact-form grid">
+          <form
+            action="mailto:wick.kyle@gmail.com"
+            class="contact-form grid"
+            id="form-contact"
+          >
+            <input type="hidden" name="contact_number" />
             <input
               type="text"
               name="name"
+              class="input"
               id="name"
               aria-label="Name Input"
               placeholder="Your Name"
+              required
             />
             <input
               type="email"
               name="email"
+              class="input"
               id="email"
               aria-label="Email Input"
               placeholder="Your Email"
+              required
             />
             <input
               type="text"
-              name="Subject"
+              name="subject"
+              class="input"
               id="subject"
               aria-activedescendant="Subject Matter Input"
               placeholder="Subject"
+              required
             />
             <textarea
               name="message"
+              class="input"
               id="message"
               aria-label="Custom Message Input"
               placeholder="Message"
               cols="30"
               rows="10"
+              required
             ></textarea>
-            <button class="form-submit b-shadow b-blue">Send</button>
+            <input
+              type="submit"
+              class="form-submit b-shadow b-blue"
+              value="Send"
+            />
           </form>
         </div>
       </section>
@@ -220,6 +216,10 @@
       <p class="subtext muted">@2022 Kyle Wick</p>
     </footer>
 
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+    ></script>
     <script src="./js/index.js"></script>
     <script src="./js/particles.js"></script>
   </body>
