@@ -67,9 +67,10 @@
 #particleSettings {
     backdrop-filter: blur(5px);
     position: absolute;
-    left: -25%;
+    left: -50%;
     top: 2em;
     min-width: 400px;
+    max-width: 25vw;
     height: 1.5em;
     padding: 1em;
     font-family: LeonSans-Light;
@@ -83,7 +84,19 @@
             left .75s ease-in-out,
             height .75s ease-in-out .5s;
     left: 1em;
-    height: 750px;
+    height: 85vh;
+}
+
+#resetParticleSystem {
+    font-size: .75em;
+    padding: .5em 1em;
+    margin-top: 1em;
+}
+
+#forceUnitSize {
+    box-sizing: border-box;
+    padding: 0;
+    margin-right: 4.25em;
 }
 
 .settings-wrapper {
@@ -109,6 +122,18 @@
     margin-bottom: .5em;
     padding-bottom: .5em;
     border-bottom: 2px solid var(--c-bg-sec);
+}
+
+.setting-btns {
+    justify-content: flex-start;
+    padding-top: 1em;
+    margin: 0 .5em;
+}
+
+.setting-btn {
+    font-size: .55em;
+    margin: .5em 0;
+    padding: .5em;
 }
 
 .value {

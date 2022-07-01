@@ -206,9 +206,15 @@ class ParticleSystem {
     constructor(renderer, settings) {
         this.#_renderer = renderer;
         this.#_particles = [];
-        this.#_p_s_settings = settings;
+        this.#_p_s_settings = {...settings};
 
         this.#onInitialize();
+    }
+
+    updateAllSettings = (newSettings) => {
+        this.#_p_s_settings = { ...newSettings };
+
+        this.#resetParticleSystem();
     }
 
     updateSetting = (settingID, newValue) => {
@@ -297,13 +303,11 @@ class ParticleSystem {
                 return this.#_renderer.drawTriangle;
             case 'Circle':
                 return this.#_renderer.drawCircle;
+            default:
+                return this.#_renderer.drawRectangle;
         }
     }
 }
-
-//   ----------------------------------   //
-/*   --------- Initialization ---------   */
-//   ----------------------------------   //
 
 const updateParticleSystemFromDOM = (input) => {
     // 
@@ -340,6 +344,24 @@ const getInputsByID = (_inputs) => {
     for (let i = 0; i < _inputs.length; i++) {
         const input = _inputs[i];
 
+        if (input.type === 'color') continue;
+
+        // Set the value to be the initial settings' value
+        input.value = settings[input.id];
+        
+        if (!obj.hasOwnProperty(input.id)) {
+            // Create and Set the object key's value
+            obj[input.id] = input;
+        }
+    }
+    return obj;
+}
+
+const getFieldsByID = (_fields) => {
+    const obj = {}
+    for (let i = 0; i < _fields.length; i++) {
+        const input = _fields[i];
+
         // Set the value to be the initial settings' value
         input.value = settings[input.id];
         
@@ -367,6 +389,10 @@ const updateDOMValue = (valuesObj, key, newValue, options) => {
     valuesObj[key].textContent = newValue;
 }
 
+//   ----------------------------------   //
+/*   --------- Initialization ---------   */
+//   ----------------------------------   //
+
 const settings = {
     count: 100,
     colors: ['#DA0037', '#444', '#00DACD'],
@@ -386,8 +412,6 @@ const particleSystem = new ParticleSystem(renderer, settings);
 /*   --------- DOM Manipulation ---------   */
 //   ------------------------------------   //
 
-
-
 // Grab all input elements corresponding to the settings ui
 
 // **NOTE** All labels' 'for' tags need to match their relative input's ID tag
@@ -398,6 +422,7 @@ const particleSystem = new ParticleSystem(renderer, settings);
 const settingsWrapper = document.querySelector('.settings-wrapper');
 const labels = settingsWrapper.getElementsByTagName('label');
 const inputs = settingsWrapper.getElementsByTagName('input');
+const fields = settingsWrapper.getElementsByTagName('fieldset');
 
 // Transform labels to an object structure for faster lookup.
 // This object structure will store an HTML element used for
@@ -414,7 +439,7 @@ inputs.forEach(input => {
     input.addEventListener('change', () => {
         updateDOMValue(
             DOMValuesByID,
-            input.id, 
+            input.id,
             input.type === 'checkbox' ? input.checked : input.value,
             {
                 isPercent: input.id === 'fadeDist',
@@ -435,11 +460,213 @@ inputs.forEach(input => {
 
     updateDOMValue(
         DOMValuesByID,
-        input.id, 
+        input.id,
         input.type === 'checkbox' ? input.checked : input.value,
         {
             isPercent: input.id === 'fadeDist',
             isNumber: input.type === 'range'
         }
     );
+});
+
+
+/* --------------------------------- */
+/* -- Special Handling for colors -- */
+/* --------------------------------- */
+
+const fieldsByID = getFieldsByID(fields);
+
+const addDOMColor = (color, id, container) => {
+
+    // Create the color input. Use Aria label instead of a label element,
+    // since a label element isn't needed here.
+    const colorEl = document.createElement('input');
+    colorEl.type = 'color';
+    colorEl.id = id;
+    colorEl.ariaLabel = 'Color Picker for' + id;
+    colorEl.value = color;
+    
+    container.append(colorEl);
+    return colorEl;
+}
+
+const removeDOMColor = (index) => {
+    // Find the element corresponding to the last color
+    const colorInputs = fieldsByID['colors'].getElementsByTagName('input');
+    const colorEl = colorInputs[index];
+
+    // Remove the element from the DOM
+    fieldsByID['colors'].removeChild(colorEl);
+
+}
+
+let colors = [...settings.colors];
+
+for (let i = 0; i < colors.length; i++) {
+    // Add the color to the DOM
+    const colorEl = addDOMColor(colors[i], 'color' + i.toString(), fieldsByID['colors']);
+
+    // On change, update the particle system
+    colorEl.addEventListener('change', () => {
+        colors[i] = colorEl.value;
+        particleSystem.updateSetting('colors', colors);
+    })
+}
+
+const addColorBtn = document.getElementById('addColor');
+addColorBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    if (colors.length >= 16) return;
+
+    const index = colors.length;
+    const id = 'color' + index.toString();
+    const defaultColor = '#FFFFFF';
+
+    const colorEl = addDOMColor(defaultColor, id, fieldsByID['colors']);
+
+    // Add an event listener to update the particle system on value change
+    colorEl.addEventListener('change', () => {
+        colors[index] = colorEl.value;
+        particleSystem.updateSetting('colors', colors);
+    })
+
+    // Update the colors array and the DOM
+    colors.push(defaultColor);
+    fieldsByID['colors'].append(colorEl);
+
+    // Notify the particle system of these changes
+    particleSystem.updateSetting('colors', colors);
+})
+
+const removeColorBtn = document.getElementById('removeColor');
+removeColorBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    if (colors.length <= 1) return;
+
+    // Remove the color input from the DOM
+    removeDOMColor(colors.length - 1);
+
+    // remove the color from the colors array
+    colors.pop();
+
+    // Notify the particle system of these changes
+    particleSystem.updateSetting('colors', colors);
+});
+
+
+/* --------------------------------- */
+/* -- Special Handling for shapes -- */
+/* --------------------------------- */
+
+let shapes = [...settings.shapes];
+
+const addDOMShape = (shape, index, value, container) => {
+    const settingWrapper = document.createElement('div');
+    settingWrapper.classList.add('setting', 'flex');
+
+    const shapeLabel = document.createElement('label');
+    shapeLabel.htmlFor = shape;
+    shapeLabel.textContent = shape;
+
+    const useShape = document.createElement('input');
+    useShape.type = 'checkbox';
+    useShape.name = shape;
+    useShape.id = shape;
+    useShape.checked = value;
+
+    settingWrapper.append(shapeLabel);
+    settingWrapper.append(useShape);
+
+    container.append(settingWrapper);
+
+    useShape.addEventListener('change', (event) => {
+        event.preventDefault();
+
+        if (event.target.checked && shapes.includes(shape)) return;
+
+        if (event.target.checked && !shapes.includes(shape)) {
+            shapes.push(shape);
+            particleSystem.updateSetting('shapes', shapes);
+            return;
+        }
+
+        if (shapes.length === 1) {
+            shapes = [];
+            particleSystem.updateSetting('shapes', shapes);
+            return;
+        }
+
+        const index = shapes.indexOf(shape);
+        shapes.splice(index, 1);
+        
+        particleSystem.updateSetting('shapes', shapes);
+    });
+}
+
+// Create DOM elements for each shape
+settings.shapes.forEach((shape, index) => {
+    addDOMShape(shape, index, true, fieldsByID['shapes']);
+})
+
+
+
+
+/* ----------------------------------- */
+/* -- Resetting the Particle System -- */
+/* ----------------------------------- */
+
+const psReset = document.getElementById('resetParticleSystem');
+psReset.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    /* ----- Colors ----- */
+
+    // Remove Existing color inputs from the DOM
+    for (let i = colors.length - 1; i >= 0; i--) {
+        removeDOMColor(i);
+        colors.pop();
+    }
+
+    // Re-Add color inputs to the DOM
+    settings.colors.forEach((color, index) => {
+        addDOMColor(color, 'color' + index.toString(), fieldsByID['colors']);
+    })
+
+    // Reset the colors array
+    colors = [...settings.colors];
+
+    /* ----- Shapes ----- */
+    shapes = [...settings.shapes];
+
+    // Resets all DOM checkboxes for the shapes to checked.
+    const useShapes = fieldsByID['shapes'].getElementsByTagName('input');
+    for (let i = 0; i < useShapes.length; i++) {
+        useShapes[i].checked = settings.shapes.includes(useShapes[i].id);
+    }
+
+    /* ----- Other Values ----- */
+    for (const [key, value] of Object.entries(settings)) {
+
+        // Resets the respective number for each range input
+        const options = {
+            isPercent: key === 'fadeDist',
+            isNumber: key !== 'forceUnitSize'
+        }
+        updateDOMValue(DOMValuesByID, key, value, options);
+
+        // Resets the Input values of each respective DOM element
+        const input = inputsByID[key];
+        if (input) {
+            if (input.type === 'checkbox') {
+                input.checked = value;
+                continue;
+            }
+            input.value = value;
+        }
+    }
+
+    // Reset the particle system back to default.
+    particleSystem.updateAllSettings(settings);
 })

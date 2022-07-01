@@ -110,4 +110,4 @@ closePSettingsButton.addEventListener('click', (event) => {
 
     openPSettingsButton.classList.remove('is-animated');
     PSettingsMenu.classList.remove('is-animated');
-})
+});

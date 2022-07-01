@@ -24,12 +24,24 @@
             <button id="closePSettings"></button>
           </div>
           <!-- Color and Shape Settings | Needs Work -->
-          <!-- <div class="setting">
-            <select class="particle-colors"></select>
+          <div class="setting flex">
+            <fieldset id="colors">
+              <legend>Colors</legend>
+            </fieldset>
+            <div class="setting-btns flex-col">
+              <button class="setting-btn b-red b-shadow" id="addColor">
+                Add
+              </button>
+              <button class="setting-btn b-red b-shadow" id="removeColor">
+                Remove
+              </button>
+            </div>
           </div>
-          <div class="setting">
-            <select class="particle-shapes"></select>
-          </div> -->
+          <div class="setting flex">
+            <fieldset id="shapes">
+              <legend>Shapes</legend>
+            </fieldset>
+          </div>
 
           <!-- Particle Count -->
           <div class="setting flex">
@@ -122,6 +134,10 @@
               step=".01"
             />
           </div>
+
+          <button class="b-shadow-reverse b-red" id="resetParticleSystem">
+            Reset
+          </button>
         </div>
       </section>
 
@@ -202,7 +218,7 @@
         <h2 class="section-title">My Favorite Projects</h2>
         <div class="projects-wrapper grid">
           <div></div>
-          <div class="project-card b-grey b-shadow-reverse">
+          <div class="project-card b-grey b-shadow">
             <h3 class="project-title">Portfolio Website</h3>
             <figure>
               <img
