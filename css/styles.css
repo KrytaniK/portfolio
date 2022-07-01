@@ -1,3 +1,565 @@
+<<<<<<< HEAD
+@import './helper.css';
+
+#bg-canvas {
+    z-index: -1;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    background-color: var(--c-bg-prim);
+    width: 100%;
+    height: 100%;
+}
+
+#openPSettings {
+    position: absolute;
+    font-family: LeonSans-Light;
+    font-size: .75em;
+    left: 1.5em;
+    top: 4em;
+    transition: 
+        left .75s ease-in-out .75s,
+        opacity .25s ease-in-out 1.5s;
+}
+
+#openPSettings.is-animated {
+    transition:
+            left .75s ease-in-out .25s,
+            opacity .25s ease-in-out;
+    left: -25%;
+    opacity: 25%;
+}
+
+#closePSettings {
+    position: absolute;
+    right: 1em;
+    font-family: Ikaros;
+    padding: 0 .5em;
+    line-height: .1;
+    width: 50px;
+    height: 50px;
+}
+
+#closePSettings::before {
+    position: absolute;
+    transform-origin: center;
+    left: 25%;
+    top: 50%;
+    width: 50%;
+    height: 2px;
+    content: '';
+    background-color: var(--c-bg-ter);
+    transform: rotate(45deg);
+}
+
+#closePSettings::after {
+    position: absolute;
+    transform-origin: center;
+    right: 25%;
+    top: 50%;
+    width: 50%;
+    height: 2px;
+    content: '';
+    background-color: var(--c-bg-ter);
+    transform: rotate(-45deg);
+}
+
+#particleSettings {
+    backdrop-filter: blur(5px);
+    box-sizing: border-box;
+    position: absolute;
+    left: -75%;
+    top: 2em;
+    min-width: 400px;
+    max-width: 25vw;
+    height: 4em;
+    padding: 1em;
+    font-family: LeonSans-Light;
+    transition:
+        left .75s ease-in-out .5s,
+        height .65s ease-in-out;
+}
+
+#particleSettings.is-animated {
+    transition:
+            left .75s ease-in-out,
+            height .75s ease-in-out .5s;
+    left: 1em;
+    height: 85vh;
+}
+
+#resetParticleSystem {
+    font-size: .75em;
+    padding: .5em 1em;
+    margin-top: 1em;
+}
+
+#forceUnitSize {
+    box-sizing: border-box;
+    padding: 0;
+    margin-right: 4.25em;
+}
+
+.settings-wrapper {
+    overflow: scroll;
+    height: 100%;
+    padding: 0 1em;
+    scrollbar-track-color: blue;
+}
+
+.settings-header {
+    justify-content: space-between;
+    padding-bottom: 1em;
+    margin-bottom: .75em;
+    line-height: 2;
+    border-bottom: 2px solid var(--c-acc-blue);
+}
+
+.settings-header h4 {
+    font-size: .75em;
+}
+
+.setting {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: .5em;
+    padding-bottom: .5em;
+    border-bottom: 2px solid var(--c-bg-sec);
+}
+
+.setting-btns {
+    justify-content: flex-start;
+    padding-top: 1em;
+    margin: 0 .5em;
+}
+
+.setting-btn {
+    font-size: .55em;
+    margin: .5em 0;
+    padding: .5em;
+}
+
+.value {
+    justify-self: right;
+    margin-right: .5em;
+    padding-right: .5em;
+    border-right: 2px solid var(--c-bg-sec);
+    font-size: .75em;
+    line-height: 1.75;
+}
+
+.navbar {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 25px;
+    margin-right: 50px;
+}
+
+.nav-items {
+    grid-template-rows: repeat(3, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: var(--c-bg-ter);
+    font-family: LeonSans-Regular;
+    font-size: .65em;
+    opacity: 50%;
+}
+
+.nav-items li {
+    justify-self: end;
+    margin: 1em .5em;
+}
+
+.nav-item {
+    letter-spacing: .1em;
+}
+
+.hero {
+    justify-content: center;
+    align-items: center;
+    color: var(--c-bg-ter);
+    height: 100vh;
+}
+
+#hero-name, #hero-title, #cv-download {
+    backdrop-filter: blur(5px);
+}
+
+#hero-name {
+    position: relative;
+    font-family: Ikaros;
+    letter-spacing: .1em;
+    font-size: 3em;
+    font-weight: 100;
+}
+
+#hero-title {
+    font-family: LeonSans-Thin;
+    font-size: .75em;
+}
+
+#cv-download {
+    font-family: LeonSans-Light;
+    text-align: center;
+    font-size: .75em;
+    letter-spacing: 3px;
+    margin-top: 1em;
+    padding: .125em 1em;
+    background-color: var(--c-bg-prim);
+}
+
+#cv-download:hover {
+    background-color: var(--c-acc-blue);
+    color: var(--c-bg-prim);
+}
+
+.about {
+    padding: 5em 0; 
+    backdrop-filter: blur(3px);
+}
+
+.specialty, .about-me, .exposure {
+    margin: 2em 0;
+}
+
+.skills {
+    margin-top: 2em;
+    padding: 0 5em;
+    justify-content: space-evenly;
+}
+
+.skill {
+    margin: .5em 1em;
+}
+
+.skill-img {
+    border-radius: 5px;
+    height: 2em;
+}
+
+.projects {
+    margin: 5em 0 0;
+}
+
+.project-card {
+    background-color: var(--c-bg-prim);
+    box-sizing: border-box;
+    max-width: 500px;
+    justify-self: center;
+    padding: 1em;
+    margin: 2em 0;
+}
+
+.project-title {
+    margin-bottom: 1em;
+    font-family: Ikaros;
+    font-weight: 100;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.project-img {
+    filter:contrast(75%);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.project-links {
+    margin-top: 1em;
+    justify-content: space-evenly;
+}
+
+.project-link {
+    font-family: LeonSans-Light;
+    font-size: .75em;
+    padding: .25em .5em;
+    background-color: var(--c-bg-prim);
+}
+
+.project-links .project-link:nth-of-type(2):hover {
+    background-color: var(--c-acc-red);
+    color: var(--c-bg-ter);
+}
+
+.project-link::after {
+    z-index: 0;
+}
+
+.project-link:hover {
+    background-color: var(--c-acc-blue);
+    color: var(--c-bg-prim);
+}
+
+.contact {
+    padding: 5em 0;
+    justify-content: center;
+}
+
+.contact-form-wrapper {
+    padding: .5em 1em 1em;
+    max-width: 750px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    background-color: var(--c-bg-prim);
+    backdrop-filter: blur(5px);
+}
+
+.contact-form-wrapper .section-title {
+    grid-column: 1 / span 2;
+    text-align: left;
+    letter-spacing: normal;
+    margin-bottom: .5em;
+}
+
+.contact-info {
+    padding-right: 2em;
+    box-sizing: border-box;
+}
+
+.contact-info .subtext {
+    box-sizing: border-box;
+    font-family: LeonSans-Regular;
+    line-height:normal;
+    letter-spacing: normal;
+}
+
+.contact-info .subtext:nth-of-type(3) {
+    padding: 0 3em;
+}
+
+.social-links {
+    justify-content: space-evenly;
+    padding: 1em 0;
+    margin: 0 1em;
+    border-top: 2px solid var(--c-bg-sec);
+    border-bottom: 2px solid var(--c-bg-sec);
+}
+
+.social-link {
+    height: 50px;
+}
+
+.contact-form {
+    box-sizing: border-box;
+}
+
+#name, #email, #subject, #message {
+    box-sizing: border-box;
+    color: var(--c-bg-ter);
+    padding: .5em;
+}
+
+#name:focus, #email:focus, #subject:focus, #message:focus {
+    background-color: var(--c-bg-sec);
+}
+
+.form-submit {
+    margin: 1em 0;
+    max-width: 150px;
+    padding: .25em 1em;
+    font-family: LeonSans-Regular;
+    font-size: .5em;
+    justify-self: end;
+    color: var(--c-bg-ter);
+}
+
+@media screen and (max-width: 768px) {
+
+    #bg-canvas, #openPSettings, #particleSettings {
+        display: none;
+    }
+
+    html {
+        font-size: 24px;
+    }
+
+    .about {
+        box-sizing: border-box;
+    }
+
+    .about-me, .specialty, .exposure {
+        box-sizing: border-box;
+        margin: 1em .5em;
+    }
+    .skills {
+        padding: 0;
+    }
+
+    .project-card {
+        margin: 2em .5em;
+    }
+
+    .project-title {
+        font-size: .95em;
+    }
+
+    .project-link {
+        margin: 1em 1em;
+    }
+
+    .contact {
+        box-sizing: border-box;
+    }
+
+    .contact-form-wrapper {
+        margin: 0 .5em;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .projects-wrapper, .about {
+        grid-template-columns: none;
+        grid-template-rows: auto auto auto;
+    }
+
+    .about-me {
+        grid-row: 1;
+        padding: 0 1em;
+    }
+
+    .specialty {
+        grid-row: 2;
+    }
+
+    .contact-form-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    .contact-form-wrapper .section-title {
+        grid-row: 1;
+        text-align: center;
+    }
+
+    .contact-info {
+        grid-row: 3;
+        padding: 0;
+        margin-top: 1em;
+    }
+
+    .contact-form {
+        margin-top: 1em;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto;
+    }
+
+    #name {
+        grid-row: 1;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    #email {
+        grid-row: 2;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #subject {
+        grid-row: 3;
+        margin: 1em 0;
+    }
+
+    #message {
+        grid-row: 4;
+        margin-bottom: 1em;
+    }
+
+    .form-submit {
+        grid-row: 5;
+        justify-self: center;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    html {
+        font-size: 20px;
+    }
+    
+    .projects-wrapper,
+    .about {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project-card {
+        max-width: 300px;
+    }
+
+    .about-me {
+        grid-column: 2;
+    }
+
+    .about-me .text {
+        padding: 0 2em;
+    }
+
+    .specialty {
+        grid-column: 1;
+    }
+
+    .contact-info {
+        margin: auto 1em;
+        font-size: 24px;
+    }
+
+    #name {
+        grid-row: 1;
+        grid-column: 1;
+        margin-right: 1em;
+    }
+
+    #email {
+        grid-row: 1;
+        grid-column: 2;
+        margin-left: 1em;
+    }
+
+    #subject {
+        grid-row: 2;
+        grid-column: 1 / span 2;
+        margin: 1em 0;
+    }
+
+    #message {
+        grid-row: 3;
+        grid-column: 1 / span 2;
+        margin-bottom: 1em;
+    }
+
+    .form-submit {
+        grid-column: 2;
+        margin-right: 2em;
+        justify-self: end;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    html {
+        font-size: 24px;
+    }
+
+    .project-card {
+        max-width: 400px;
+    }
+
+    .contact-info {
+        font-size: inherit;
+        margin: auto .5em;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    html {
+        font-size: 32px;
+    }
+
+    .project-card {
+        max-width: 500px;
+    }
+=======
 
 :root {
     --main-font: 'Contrail One', cursive;
@@ -212,4 +774,5 @@ section {
     height: 3rem;
 
     margin: 1rem;
+>>>>>>> origin/master
 }

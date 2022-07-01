@@ -1,3 +1,224 @@
+<<<<<<< HEAD
+:root {
+    --c-bg-prim: #171717;
+    --c-bg-sec: #444444;
+    --c-bg-ter: #EDEDED;
+    --c-acc-blue: #00B3DA;
+    --c-acc-red: #DA0037;
+}
+
+@font-face {
+    font-family: Ikaros;
+    src: url('../fonts/Ikaros.otf') format('opentype');
+}
+
+@font-face {
+    font-family: LeonSans-Bold;
+    src: url('../fonts/LeonSans-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: LeonSans-Light;
+    src: url('../fonts/LeonSans-Light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: LeonSans-Medium;
+    src: url('../fonts/LeonSans-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: LeonSans-Regular;
+    src: url('../fonts/LeonSans-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: LeonSans-Thin;
+    src: url('../fonts/LeonSans-Thin.otf') format('opentype');
+}
+
+html {
+    font-size: 32px;
+    color: var(--c-bg-ter);
+    text-align: center;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+body {
+    background-color: var(--c-bg-prim);
+}
+
+a {
+    text-decoration: none;
+    color: var(--c-bg-ter);
+    transition: all .25s ease-in-out;
+    cursor: pointer;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    background: 0;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+}
+
+fieldset {
+    border: 2px solid var(--c-acc-blue);
+    padding: 1em 1em 2em 1em;
+    width: 100%;
+}
+
+legend {
+    padding: 0 .5em .5em;
+    margin: 0 -25%;
+}
+
+input, textarea {
+    background: none;
+    border: none;
+    font-family: LeonSans-Regular;
+    letter-spacing: 3px;
+    padding: 0;
+    border-bottom: 2px solid var(--c-bg-sec);
+}
+
+textarea {
+    resize: none;
+}
+
+label {
+    font-size: .75em;
+    width: 100%;
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+input:valid, textarea:valid {
+    border-bottom: 2px solid var(--c-acc-blue);
+}
+
+input:invalid, textarea:invalid {
+    border-bottom: 2px solid var(--c-acc-red);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active,
+input:-webkit-autofill:focus {
+    box-shadow: 0 0 0px 20px var(--c-bg-prim) inset;
+    -webkit-box-shadow: 0 0 0px 20px var(--c-bg-prim) inset;
+    -webkit-text-fill-color: var(--c-bg-ter);
+}
+
+input[type='color'], input[type='color']:active {
+    border: none;
+    background: none;
+    outline: none;
+    width: 3em;
+    height: 3em;
+    margin: 0 1em;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    transition: background-color .25s, color .25s;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--c-acc-blue);
+    color: var(--c-bg-prim);
+}
+
+input[type="range"],
+input[type="range"]:valid {
+    width: 50%;
+    appearance: none;
+    border: none;
+    background-color: var(--c-acc-red);
+    height: .1em;
+    margin: auto;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    margin: 0;
+    appearance: none;
+    width: 3px;
+    height: 15px;
+    background-color: var(--c-bg-ter);
+}
+
+input[type="checkbox"],
+input[type="checkbox"]:valid {
+    appearance: none;
+    border: none;
+    border: 2px solid var(--c-acc-blue);
+    border-radius: 5px;
+    min-width: 2em;
+    min-height: 2em;
+    cursor: pointer;
+    place-content: center;
+    display: grid;
+}
+
+input[type="checkbox"]::before {
+    content: '';
+    background-color: var(--c-acc-red);
+    width: 1em;
+    height: 1em;
+    transform: scale(0);
+    transition: transform .25s ease-in-out;
+    transform-origin: center;
+
+    /* Check Mark */
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+    background-color: var(--c-acc-blue);
+    transform: scale(1);
+}
+
+figure {
+    margin: 0;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    appearance: none;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--c-bg-sec);
+    border-radius: 1em;
+}
+*::-webkit-scrollbar-corner {
+    appearance: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.flex {
+    display: flex;
+=======
 .highlight {
     color: var(--color-text-hl);
 }
@@ -29,6 +250,7 @@
     cursor: pointer;
     border: 2px solid var(--color-secondary);
     background-color: var(--color-secondary);
+>>>>>>> origin/master
 }
 
 .flex-wrap {
@@ -36,6 +258,121 @@
     flex-wrap: wrap;
 }
 
+<<<<<<< HEAD
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid {
+    display: grid;
+}
+
+.b-blue {
+    border: 2px solid var(--c-acc-blue);
+    border-radius: 5px;
+}
+
+.b-red {
+    border: 2px solid var(--c-acc-red);
+    border-radius: 5px;
+}
+
+.b-grey {
+    border: 2px solid var(--c-bg-sec);
+    border-radius: 5px;
+}
+
+.b-shadow {
+    position: relative;
+}
+
+.b-shadow::after {
+    z-index: -1;
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    content: '';
+    border-radius: 5px;
+    box-shadow: 2px -2px 0 var(--c-bg-ter);
+    width: 100%;
+    height: 100%;
+}
+
+.b-shadow-reverse {
+    position: relative;
+}
+
+.b-shadow-reverse::after {
+    z-index: -1;
+    position: absolute;
+    bottom: 6px;
+    left: -6px;
+    content: '';
+    border-radius: 5px;
+    box-shadow: -2px -2px 0 var(--c-bg-ter);
+    width: 100%;
+    height: 100%;
+}
+
+.highlight {
+    color: var(--c-acc-blue);
+}
+
+.section-title {
+    font-family: LeonSans-Bold;
+    text-transform: uppercase;
+}
+
+.text {
+    font-family: LeonSans-Regular;
+    line-height: 2;
+    font-size: .75em;
+}
+
+.text-desc {
+    font-family: LeonSans-Light;
+    font-size: .75em;
+    letter-spacing: 2px;
+}
+
+.subtext {
+    font-family: LeonSans-thin;
+    font-size: .5em;
+    letter-spacing: 2px;
+    line-height: 2;
+}
+
+.muted {
+    opacity: 50%;
+}
+
+#portal {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.notif {
+    z-index: 10;
+    position: absolute;
+    top: 1em;
+    padding: .5em 1em;
+    font-family: LeonSans-Regular;
+    font-size: .75em;
+    letter-spacing: 2px;
+    transition: right 1s ease-in-out;
+    background-color: var(--c-bg-prim);
+    min-width: 200px;
+}
+
+.notif-inactive {
+    right: -100vw;
+}
+
+.notif-active {
+    right: 1em;
+=======
 .center {
     justify-content: center;
 }
@@ -43,4 +380,5 @@
 .logo {
     width: 5em;
     height: 5em;
+>>>>>>> origin/master
 }
