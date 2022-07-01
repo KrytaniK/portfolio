@@ -16,10 +16,115 @@
   <body>
     <canvas id="bg-canvas"></canvas>
     <header>
-      <!-- <div class="bg-settings">
-        <button><h3>Close</h3></button>
-      </div> -->
-      <button id="bg-settings-toggle">Background Settings</button>
+      <button id="openPSettings">Background Settings</button>
+      <section class="b-shadow-reverse b-blue" id="particleSettings">
+        <div class="settings-wrapper">
+          <div class="settings-header flex">
+            <h4 class="settings-title">Particle System Settings</h4>
+            <button id="closePSettings"></button>
+          </div>
+          <!-- Color and Shape Settings | Needs Work -->
+          <!-- <div class="setting">
+            <select class="particle-colors"></select>
+          </div>
+          <div class="setting">
+            <select class="particle-shapes"></select>
+          </div> -->
+
+          <!-- Particle Count -->
+          <div class="setting flex">
+            <label for="count"
+              >Particle Count: <span class="value">0</span></label
+            >
+            <input
+              type="range"
+              min="0"
+              max="1000"
+              name="count"
+              id="count"
+              step="10"
+            />
+          </div>
+
+          <!-- Minimum Particle Speed -->
+          <div class="setting flex">
+            <label for="min_speed"
+              >Min Speed: <span class="value">0</span></label
+            >
+            <input
+              type="range"
+              min="0"
+              max="2"
+              name="min_speed"
+              id="min_speed"
+              step=".001"
+            />
+          </div>
+
+          <!-- Maximum Particle Speed -->
+          <div class="setting flex">
+            <label for="max_speed"
+              >Max Speed: <span class="value">0</span></label
+            >
+            <input
+              type="range"
+              min="2"
+              max="10"
+              name="max_speed"
+              id="max_speed"
+              step=".01"
+            />
+          </div>
+
+          <!-- Minimum Particle Size -->
+          <div class="setting flex">
+            <label for="min_size">Min Size: <span class="value">0</span></label>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              name="min_size"
+              id="min_size"
+              step=".001"
+            />
+          </div>
+
+          <!-- Maximum Particle Size -->
+          <div class="setting flex">
+            <label for="max_size">Max Size: <span class="value">0</span></label>
+            <input
+              type="range"
+              min="5"
+              max="10"
+              name="max_size"
+              id="max_size"
+              step=".1"
+            />
+          </div>
+
+          <!-- Force Unit Size -->
+          <div class="setting flex">
+            <label for="forceUnitSize">Force Unit Size</label>
+            <input type="checkbox" name="forceUnitSize" id="forceUnitSize" />
+          </div>
+
+          <!-- Padticle Fade Distance -->
+          <div class="setting flex">
+            <label for="fadeDist">
+              Fade Distance: <span class="value">0</span>
+            </label>
+            <input
+              type="range"
+              min="0"
+              max=".5"
+              name="fadeDist"
+              id="fadeDist"
+              step=".01"
+            />
+          </div>
+        </div>
+      </section>
+
       <nav class="navbar">
         <div class="hamburger"></div>
         <ul class="nav-items grid">
@@ -34,7 +139,7 @@
       </nav>
       <section class="hero flex-col">
         <h1 id="hero-name">Kyle Wick</h1>
-        <h4 id="hero-title" class="muted">Front-End Web Developer</h4>
+        <h2 id="hero-title" class="muted">Front-End Web Developer</h2>
         <a
           href="https://docs.google.com/document/d/1Pn2qJCPeiTFbOAPJ6kbl1vFTlyAPLuWo5pBY5IwKV9s/export?format=pdf"
           download="CV_Kyle_Wick"
@@ -97,18 +202,20 @@
         <h2 class="section-title">My Favorite Projects</h2>
         <div class="projects-wrapper grid">
           <div></div>
-          <div class="project-card b-grey">
-            <h2 class="project-title">Portfolio Website</h2>
-            <img
-              src="./images/Capture.PNG"
-              alt="Project Demo Image"
-              class="project-img"
-            />
-            <p class="text-desc">
-              My first project outside of prototypes. The goal for this site was
-              to challenge my knowledge the fundamentals < (HTML, CSS, JS) >
-              while learning to use Git for version control.
-            </p>
+          <div class="project-card b-grey b-shadow-reverse">
+            <h3 class="project-title">Portfolio Website</h3>
+            <figure>
+              <img
+                src="./images/Capture.PNG"
+                alt="Project Demo Image"
+                class="project-img"
+              />
+              <figcaption class="text-desc">
+                My first project outside of prototypes. The goal for this site
+                was to challenge my knowledge the fundamentals < (HTML, CSS, JS)
+                > while learning to use Git for version control.
+              </figcaption>
+            </figure>
             <p class="subtext">
               Role: Designer / Developer
               <br />
@@ -134,7 +241,7 @@
         </div>
       </section>
       <section class="contact flex">
-        <div class="contact-form-wrapper grid b-grey">
+        <div class="contact-form-wrapper grid b-grey b-shadow">
           <h2 class="section-title">Contact Me</h2>
           <div class="contact-info">
             <p class="subtext">You can also find me here</p>
@@ -214,12 +321,13 @@
       <p class="subtext">Self-Taught, Self-Made</p>
       <p class="subtext muted">@2022 Kyle Wick</p>
     </footer>
-
+    <div id="portal"></div>
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
     ></script>
     <script src="./js/index.js"></script>
+    <script src="./js/util.js"></script>
     <script src="./js/particles.js"></script>
   </body>
 </html>

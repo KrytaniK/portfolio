@@ -49,6 +49,8 @@ body, h1, h2, h3, h4, h5, h6 {
 a {
     text-decoration: none;
     color: var(--c-bg-ter);
+    transition: all .25s ease-in-out;
+    cursor: pointer;
 }
 
 button {
@@ -60,6 +62,7 @@ button {
     font-family: inherit;
     font-size: inherit;
     cursor: pointer;
+    transition: all .25s ease-in-out;
 }
 
 input, textarea {
@@ -73,6 +76,40 @@ input, textarea {
 
 textarea {
     resize: none;
+}
+
+label {
+    font-size: .75em;
+    width: 100%;
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    transition: background-color .25s, color .25s;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--c-acc-blue);
+    color: var(--c-bg-prim);
+}
+
+input[type="range"], input[type="range"]:valid {
+    appearance: none;
+    border: none;
+    background-color: var(--c-acc-red);
+    height: .1em;
+    margin: auto;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 3px;
+    height: 15px;
+    background-color: var(--c-bg-ter);
 }
 
 input:focus, textarea:focus {
@@ -94,6 +131,14 @@ input:-webkit-autofill:focus {
     box-shadow: 0 0 0px 20px var(--c-bg-prim) inset;
     -webkit-box-shadow: 0 0 0px 20px var(--c-bg-prim) inset;
     -webkit-text-fill-color: var(--c-bg-ter);
+}
+
+figure {
+    margin: 0;
+}
+
+.hidden {
+    display: none;
 }
 
 .flex {
@@ -134,12 +179,29 @@ input:-webkit-autofill:focus {
 }
 
 .b-shadow::after {
+    z-index: -1;
     position: absolute;
     bottom: 6px;
     left: 6px;
     content: '';
     border-radius: 5px;
     box-shadow: 2px -2px 0 var(--c-bg-ter);
+    width: 100%;
+    height: 100%;
+}
+
+.b-shadow-reverse {
+    position: relative;
+}
+
+.b-shadow-reverse::after {
+    z-index: -1;
+    position: absolute;
+    bottom: 6px;
+    left: -6px;
+    content: '';
+    border-radius: 5px;
+    box-shadow: -2px -2px 0 var(--c-bg-ter);
     width: 100%;
     height: 100%;
 }
@@ -174,4 +236,31 @@ input:-webkit-autofill:focus {
 
 .muted {
     opacity: 50%;
+}
+
+#portal {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.notif {
+    z-index: 10;
+    position: absolute;
+    top: 1em;
+    padding: .5em 1em;
+    font-family: LeonSans-Regular;
+    font-size: .75em;
+    letter-spacing: 2px;
+    transition: right 1s ease-in-out;
+    background-color: var(--c-bg-prim);
+    min-width: 200px;
+}
+
+.notif-inactive {
+    right: -100vw;
+}
+
+.notif-active {
+    right: 1em;
 }

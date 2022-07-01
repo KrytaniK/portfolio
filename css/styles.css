@@ -11,28 +11,114 @@
     height: 100%;
 }
 
-/* Background Settings Menu Styling | WIP */
-
-#bg-settings-toggle {
+#openPSettings {
     position: absolute;
-    left: 1.5em;
-    top: .75em;
     font-family: LeonSans-Light;
-    font-size: .65em;
-    opacity: 50%;
+    font-size: .75em;
+    left: 1.5em;
+    top: 4em;
+    transition: 
+        left .75s ease-in-out .75s,
+        opacity .25s ease-in-out 1.5s;
 }
 
-.bg-settings {
-    z-index: 10;
-    position: fixed;
+#openPSettings.is-animated {
+    transition:
+            left .75s ease-in-out .25s,
+            opacity .25s ease-in-out;
+    left: -25%;
+    opacity: 25%;
+}
+
+#closePSettings {
+    position: absolute;
+    right: 1em;
+    font-family: Ikaros;
+    padding: 0 .5em;
+    line-height: .1;
+    width: 50px;
+    height: 50px;
+}
+
+#closePSettings::before {
+    position: absolute;
+    transform-origin: center;
+    left: 25%;
+    top: 50%;
+    width: 50%;
+    height: 2px;
+    content: '';
+    background-color: var(--c-bg-ter);
+    transform: rotate(45deg);
+}
+
+#closePSettings::after {
+    position: absolute;
+    transform-origin: center;
+    right: 25%;
+    top: 50%;
+    width: 50%;
+    height: 2px;
+    content: '';
+    background-color: var(--c-bg-ter);
+    transform: rotate(-45deg);
+}
+
+#particleSettings {
+    backdrop-filter: blur(5px);
+    position: absolute;
+    left: -25%;
     top: 2em;
-    left: 1em;
-    width: 500px;
-    height: 750px;
-    background-color: white;
+    min-width: 400px;
+    height: 1.5em;
+    padding: 1em;
+    font-family: LeonSans-Light;
+    transition:
+        left .75s ease-in-out .5s,
+        height .65s ease-in-out;
 }
 
-/* WIP End */
+#particleSettings.is-animated {
+    transition:
+            left .75s ease-in-out,
+            height .75s ease-in-out .5s;
+    left: 1em;
+    height: 750px;
+}
+
+.settings-wrapper {
+    overflow: hidden;
+    height: 100%;
+}
+
+.settings-header {
+    justify-content: space-between;
+    padding-bottom: 1em;
+    margin-bottom: .75em;
+    line-height: 2;
+    border-bottom: 2px solid var(--c-acc-blue);
+}
+
+.settings-header h4 {
+    font-size: .75em;
+}
+
+.setting {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: .5em;
+    padding-bottom: .5em;
+    border-bottom: 2px solid var(--c-bg-sec);
+}
+
+.value {
+    justify-self: right;
+    margin-right: .5em;
+    padding-right: .5em;
+    border-right: 2px solid var(--c-bg-sec);
+    font-size: .75em;
+    line-height: 1.75;
+}
 
 .navbar {
     display: none;
@@ -69,6 +155,10 @@
     height: 100vh;
 }
 
+#hero-name, #hero-title, #cv-download {
+    backdrop-filter: blur(5px);
+}
+
 #hero-name {
     position: relative;
     font-family: Ikaros;
@@ -85,9 +175,16 @@
 #cv-download {
     font-family: LeonSans-Light;
     text-align: center;
+    font-size: .75em;
+    letter-spacing: 3px;
     margin-top: 1em;
     padding: .125em 1em;
     background-color: var(--c-bg-prim);
+}
+
+#cv-download:hover {
+    background-color: var(--c-acc-blue);
+    color: var(--c-bg-prim);
 }
 
 .about {
@@ -147,10 +244,24 @@
 }
 
 .project-link {
-    font-family: LeonSans-Thin;
+    font-family: LeonSans-Light;
     font-size: .75em;
     padding: .25em .5em;
     background-color: var(--c-bg-prim);
+}
+
+.project-links .project-link:nth-of-type(2):hover {
+    background-color: var(--c-acc-red);
+    color: var(--c-bg-ter);
+}
+
+.project-link::after {
+    z-index: 0;
+}
+
+.project-link:hover {
+    background-color: var(--c-acc-blue);
+    color: var(--c-bg-prim);
 }
 
 .contact {
@@ -227,6 +338,10 @@
 }
 
 @media screen and (max-width: 768px) {
+
+    #openPSettings, #particleSettings {
+        display: none;
+    }
 
     html {
         font-size: 24px;

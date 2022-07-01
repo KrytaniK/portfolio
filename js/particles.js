@@ -1,16 +1,7 @@
-// Helper Methods
 
-function randomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-function randomValue(min, max) {
-    return Math.random() * (max - min + 1) + min;
-}
-
-function clamp(num, min, max) {
-    return Math.min(max, Math.max(num, min));
-}
+//   ------------------------------------   //
+/*   --------- Canvas Rendering ---------   */
+//   ------------------------------------   //
 
 class Renderer {
     #canvas;
@@ -86,10 +77,17 @@ class Renderer {
         this.#frameEvents = [];
     }
 
-    drawRectangle = (x, y, dimensions, color, opacity) => {
-        const { width, height } = dimensions;
+    drawRectangle = (x, y, dimensions, color, opacity, forceUnitSize) => {
+        const { width, height, size } = dimensions;
+
         this.#context.globalAlpha = opacity;
         this.#context.fillStyle = color;
+
+        if (forceUnitSize) {
+            this.#context.fillRect(x, y, size, size);
+            return;
+        }
+
         this.#context.fillRect(x, y, width, height);
     }
 
@@ -116,6 +114,10 @@ class Renderer {
         this.#context.closePath();
     }
 }
+
+//   -----------------------------------   //
+/*   --------- Particle System ---------   */
+//   -----------------------------------   //
 
 class Particle {
     #size;
@@ -165,10 +167,12 @@ class Particle {
             {
                 width: this.#width,
                 height: this.#size,
-                radius: this.#size
+                radius: this.#size,
+                size: this.#size
             },
             this.#color,
-            opacity
+            opacity,
+            this.#forceUnitSize
         );
 
         // if this particle is out of the given bounds, recycle this
@@ -205,6 +209,14 @@ class ParticleSystem {
         this.#_p_s_settings = settings;
 
         this.#onInitialize();
+    }
+
+    updateSetting = (settingID, newValue) => {
+        // Make appropriate changes and re-initialize the particles.
+        this.#_p_s_settings[settingID] = newValue;
+        
+        // Reset PS
+        this.#resetParticleSystem();
     }
 
     #onInitialize = () => {
@@ -272,7 +284,7 @@ class ParticleSystem {
                 y: canvasSize.height
             },
             forceUnitSize: settings.forceUnitSize,
-            alphaThreshhold: settings.fadeInDist * canvasSize.width,
+            alphaThreshhold: settings.fadeDist * canvasSize.width,
             onDrawShape: shapeFunction
         }
     }
@@ -289,18 +301,145 @@ class ParticleSystem {
     }
 }
 
-const renderer = new Renderer('bg-canvas', '2d');
+//   ----------------------------------   //
+/*   --------- Initialization ---------   */
+//   ----------------------------------   //
 
-const pS_Settings = {
+const updateParticleSystemFromDOM = (input) => {
+    // 
+    switch (input.type) {
+        case 'checkbox':
+            particleSystem.updateSetting(input.id, input.checked);
+            break;
+        default:
+            particleSystem.updateSetting(input.id, Number(input.value));
+            break;
+    }
+}
+
+const getDomValuesByID = (labels) => {
+    const obj = {};
+    for (let i = 0; i < labels.length; i++) {
+        const label = labels[i];
+
+        // If the label contains no value element, skip it.
+        if (!label.querySelector('.value')) continue;
+        
+        if (!obj.hasOwnProperty(label.htmlFor)) {
+
+            // Create and Set the object key's value, storing the 
+            // label's 'value' element, rather than the label.
+            obj[label.htmlFor] = label.querySelector('.value');
+        }
+    }
+    return obj;
+}
+
+const getInputsByID = (_inputs) => {
+    const obj = {}
+    for (let i = 0; i < _inputs.length; i++) {
+        const input = _inputs[i];
+
+        // Set the value to be the initial settings' value
+        input.value = settings[input.id];
+        
+        if (!obj.hasOwnProperty(input.id)) {
+            // Create and Set the object key's value
+            obj[input.id] = input;
+        }
+    }
+    return obj;
+}
+
+const updateDOMValue = (valuesObj, key, newValue, options) => {
+    if (!valuesObj[key]) return;
+
+    if (options.isPercent) {
+        valuesObj[key].textContent = (parseInt(Number(newValue) * 100)).toString() + "%";
+        return;
+    }
+
+    if (options.isNumber) {
+        valuesObj[key].textContent = Number(newValue);
+        return;
+    }
+
+    valuesObj[key].textContent = newValue;
+}
+
+const settings = {
     count: 100,
     colors: ['#DA0037', '#444', '#00DACD'],
     shapes: ['Rectangle', 'Circle', 'Triangle'],
-    min_speed: .15,
-    max_speed: 2,
+    min_speed: .005,
+    max_speed: .1,
     min_size: 3,
     max_size: 7,
     forceUnitSize: false,
-    fadeInDist: .5
+    fadeDist: .25
 }
 
-const particleSystem = new ParticleSystem(renderer, pS_Settings);
+const renderer = new Renderer('bg-canvas', '2d');
+const particleSystem = new ParticleSystem(renderer, settings);
+
+//   ------------------------------------   //
+/*   --------- DOM Manipulation ---------   */
+//   ------------------------------------   //
+
+
+
+// Grab all input elements corresponding to the settings ui
+
+// **NOTE** All labels' 'for' tags need to match their relative input's ID tag
+//          AND the corresponding key in the above settings object. Otherwise,
+//          the lookups will read undefined, causing issues.
+
+// Get all labels and inputs within the settings-wrapper class.
+const settingsWrapper = document.querySelector('.settings-wrapper');
+const labels = settingsWrapper.getElementsByTagName('label');
+const inputs = settingsWrapper.getElementsByTagName('input');
+
+// Transform labels to an object structure for faster lookup.
+// This object structure will store an HTML element used for
+// displaying each input's value, keyed by the ID of the label.
+DOMValuesByID = getDomValuesByID(labels);
+
+// Transforms inputs to an object structure for faster lookup.
+// Stores the input ID as the key, and the input element as the value.
+inputsByID = getInputsByID(inputs);
+
+// set event listeners for each input and update their initial values
+inputs.forEach(input => {
+    
+    input.addEventListener('change', () => {
+        updateDOMValue(
+            DOMValuesByID,
+            input.id, 
+            input.type === 'checkbox' ? input.checked : input.value,
+            {
+                isPercent: input.id === 'fadeDist',
+                isNumber: input.type === 'range'
+            }
+        );
+        updateParticleSystemFromDOM(input);
+    });
+    
+    input.addEventListener('mousemove', () => {
+        if (!DOMValuesByID[input.id]) return;
+
+        updateDOMValue(DOMValuesByID, input.id, input.value, {
+            isPercent: input.id === 'fadeDist',
+            isNumber: input.type === 'range'
+        });
+    });
+
+    updateDOMValue(
+        DOMValuesByID,
+        input.id, 
+        input.type === 'checkbox' ? input.checked : input.value,
+        {
+            isPercent: input.id === 'fadeDist',
+            isNumber: input.type === 'range'
+        }
+    );
+})
