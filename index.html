@@ -12,128 +12,338 @@
     />
 
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/helper.css" />
   </head>
   <body>
-    <header></header>
-    <main>
-      <section class="intro">
-        <h1>Hello, I'm <span class="highlight">Kyle Wick</span></h1>
-        <h2>Software Developer</h2>
-        <div class="intro-cta">
-          <button class="btn" id="viewWork">View My Work</button>
-          <!-- The Resume Link needs to be updated to download the actual resume, instead of this dummy template -->
-          <a
-            class="btn"
-            href="https://drive.google.com/uc?export=download&id=176ReVbO0mppCA5ekVfkkfL0Rb8QJMO9y"
-            download="SampleResume"
-            >Sample Resume</a
-          >
-        </div>
-        <div class="scroll-cta">
-          Scroll
-          <div class="scroll-cta-arw"></div>
-        </div>
-      </section>
-      <section class="about">
-        <div class="trans-bg"></div>
-        <h1 class="title">About</h1>
-        <div class="flex-wrap center">
-          <div class="bio">
-            <h3 class="subtitle">A Short Bio</h3>
-            <div class="bio-text">
-              I am a self-taught developer based in North Texas, focused on
-              building front-end applications and websites.
-              <br />
-              <br />
-              When I'm not coding, I enjoy playing video games and expressing my
-              creativity through drawing and 3D modelling.
+    <canvas id="bg-canvas"></canvas>
+    <header>
+      <button id="openPSettings">Background Settings</button>
+      <section class="b-shadow-reverse b-blue" id="particleSettings">
+        <div class="settings-wrapper">
+          <div class="settings-header flex">
+            <h4 class="settings-title">Background Settings</h4>
+            <button id="closePSettings"></button>
+          </div>
+          <!-- Color and Shape Settings | Needs Work -->
+          <div class="setting flex">
+            <fieldset id="colors">
+              <legend>Colors</legend>
+            </fieldset>
+            <div class="setting-btns flex-col">
+              <button class="setting-btn b-red b-shadow" id="addColor">
+                Add
+              </button>
+              <button class="setting-btn b-red b-shadow" id="removeColor">
+                Remove
+              </button>
             </div>
           </div>
-          <div class="skills">
-            <h3 class="subtitle">Current Skillset</h3>
-            <div class="flex-wrap center">
-              <div class="skill">
-                <img class="logo" src="./logos/html-logo.svg" alt="HTML Logo" />
-                HTML5
-              </div>
-              <div class="skill">
-                <img class="logo" src="./logos/css-logo.svg" alt="CSS Logo" />
-                CSS3
-              </div>
-              <div class="skill">
-                <img
-                  class="logo"
-                  src="./logos/js-logo.svg"
-                  alt="Javascript Logo"
-                />
-                Javascript
-              </div>
-              <div class="skill">
-                <img
-                  class="logo"
-                  src="./logos/react-logo.svg"
-                  alt="React JS Logo"
-                />
-                React
-              </div>
+          <div class="setting flex">
+            <fieldset id="shapes">
+              <legend>Shapes</legend>
+            </fieldset>
+          </div>
+
+          <!-- Particle Count -->
+          <div class="setting flex">
+            <label for="count"
+              >Particle Count: <span class="value">0</span></label
+            >
+            <input
+              type="range"
+              min="0"
+              max="1000"
+              name="count"
+              id="count"
+              step="10"
+            />
+          </div>
+
+          <!-- Minimum Particle Speed -->
+          <div class="setting flex">
+            <label for="min_speed"
+              >Min Speed: <span class="value">0</span></label
+            >
+            <input
+              type="range"
+              min="0"
+              max="2"
+              name="min_speed"
+              id="min_speed"
+              step=".001"
+            />
+          </div>
+
+          <!-- Maximum Particle Speed -->
+          <div class="setting flex">
+            <label for="max_speed"
+              >Max Speed: <span class="value">0</span></label
+            >
+            <input
+              type="range"
+              min="2"
+              max="10"
+              name="max_speed"
+              id="max_speed"
+              step=".01"
+            />
+          </div>
+
+          <!-- Minimum Particle Size -->
+          <div class="setting flex">
+            <label for="min_size">Min Size: <span class="value">0</span></label>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              name="min_size"
+              id="min_size"
+              step=".001"
+            />
+          </div>
+
+          <!-- Maximum Particle Size -->
+          <div class="setting flex">
+            <label for="max_size">Max Size: <span class="value">0</span></label>
+            <input
+              type="range"
+              min="5"
+              max="10"
+              name="max_size"
+              id="max_size"
+              step=".1"
+            />
+          </div>
+
+          <!-- Force Unit Size -->
+          <div class="setting flex">
+            <label for="forceUnitSize">Force Unit Size</label>
+            <input type="checkbox" name="forceUnitSize" id="forceUnitSize" />
+          </div>
+
+          <!-- Padticle Fade Distance -->
+          <div class="setting flex">
+            <label for="fadeDist">
+              Fade Distance: <span class="value">0</span>
+            </label>
+            <input
+              type="range"
+              min="0"
+              max=".5"
+              name="fadeDist"
+              id="fadeDist"
+              step=".01"
+            />
+          </div>
+
+          <button class="b-shadow-reverse b-red" id="resetParticleSystem">
+            Reset
+          </button>
+        </div>
+      </section>
+
+      <nav class="navbar">
+        <div class="hamburger"></div>
+        <ul class="nav-items grid">
+          <li><button class="nav-item" id="about-scrollTo">About</button></li>
+          <li>
+            <button class="nav-item" id="projects-scrollTo">Projects</button>
+          </li>
+          <li>
+            <button class="nav-item" id="contact-scrollTo">Contact</button>
+          </li>
+        </ul>
+      </nav>
+      <section class="hero flex-col">
+        <h1 id="hero-name">Kyle Wick</h1>
+        <h2 id="hero-title" class="muted">Front-End Web Developer</h2>
+        <a
+          href="https://docs.google.com/document/d/1Pn2qJCPeiTFbOAPJ6kbl1vFTlyAPLuWo5pBY5IwKV9s/export?format=pdf"
+          download="CV_Kyle_Wick"
+          class="b-shadow b-blue"
+          id="cv-download"
+          >CV</a
+        >
+      </section>
+    </header>
+    <main>
+      <section class="about grid">
+        <div class="specialty">
+          <h2 class="section-title">My Specialty</h2>
+          <div class="skills flex-wrap">
+            <div class="skill">
+              <img class="skill-img" src="./svgs/Logos/JS_Logo.svg" alt="" />
+              <p class="subtext">JavaScript</p>
+            </div>
+            <div class="skill">
+              <img class="skill-img" src="./svgs/Logos/React-icon.svg" alt="" />
+              <p class="subtext">React.js</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-me">
+          <h2 class="section-title">What Am I About?</h2>
+          <p class="text">
+            I'm Kyle Wick, a
+            <span class="highlight">Front-End Web Developer</span> based in
+            North Texas. Fueled by my passion for art and technology, I am
+            always searching for new opportunites to bring creative energy into
+            my work. When I'm not building projects or researching, I spend a
+            lot of my time relaxing and improving my artistic capability through
+            sketching, 3D Modelling, and, on occasion, game development.
+          </p>
+        </div>
+        <div class="exposure">
+          <h2 class="section-title">I've Been Exposed To</h2>
+          <div class="skills flex-wrap">
+            <div class="skill">
+              <img
+                class="skill-img"
+                src="./svgs/Logos/MongoDB_Logo_Simple.svg"
+                alt="Mongo D B Logo"
+              />
+              <p class="subtext">MongoDB</p>
+            </div>
+            <div class="skill">
+              <img
+                class="skill-img"
+                src="./svgs/Logos/node-js-white.svg"
+                alt=""
+              />
+              <p class="subtext">Node.js</p>
             </div>
           </div>
         </div>
       </section>
       <section class="projects">
-        <h1 class="title">Projects</h1>
-        <div class="projects-wrapper">
-          <div class="project">
-            <h4 class="project-title">Porfolio Webite</h4>
-            <!-- The source for this image needs to be changed -->
-            <img
-              class="project-image"
-              src="./logos/html-logo.svg"
-              alt="Portfolio Website Image"
-            />
-            <p class="project-desc">
-              This very website was built from scratch using HTML, CSS and
-              Javascript
+        <h2 class="section-title">My Favorite Projects</h2>
+        <div class="projects-wrapper grid">
+          <div></div>
+          <div class="project-card b-grey b-shadow">
+            <h3 class="project-title">Portfolio Website</h3>
+            <figure>
+              <img
+                src="./images/Capture.PNG"
+                alt="Project Demo Image"
+                class="project-img"
+              />
+              <figcaption class="text-desc">
+                My first project outside of prototypes. The goal for this site
+                was to challenge my knowledge the fundamentals < (HTML, CSS, JS)
+                > while learning to use Git for version control.
+              </figcaption>
+            </figure>
+            <p class="subtext">
+              Role: Designer / Developer
+              <br />
+              Tech Used: HTML, CSS, JavaScript
             </p>
-            <div class="project-links">
-              <a
-                href="https://krytanik.github.io/portfolio/"
-                target="_blank"
-                rel="noreferrer noopener"
-                >Live Site</a
-              >
+            <div class="project-links flex-wrap">
               <a
                 href="https://github.com/KrytaniK/portfolio"
                 target="_blank"
-                rel="noreferrer noopener"
-                >Github Repo</a
+                class="project-link b-shadow b-blue"
+                >Code</a
+              >
+              <a href="/" class="project-link b-shadow b-red">Live Site</a>
+              <a
+                href="https://www.figma.com/file/Wm7HhFa1Gr1FKWHWiKyrIL/Portfolio-Website-Design?node-id=0%3A1"
+                target="_blank"
+                class="project-link b-shadow b-blue"
+                >Design</a
               >
             </div>
           </div>
+          <div></div>
+        </div>
+      </section>
+      <section class="contact flex">
+        <div class="contact-form-wrapper grid b-grey b-shadow">
+          <h2 class="section-title">Contact Me</h2>
+          <div class="contact-info">
+            <p class="subtext">You can also find me here</p>
+            <div class="social-links flex">
+              <img
+                src="./svgs/Logos/Github-logo.svg"
+                alt="Github Link"
+                class="social-link"
+              />
+              <img
+                src="./svgs/Logos/LinkedIn-Logo.svg"
+                alt="Linked-In Link"
+                class="social-link"
+              />
+            </div>
+            <p class="subtext">I would love to hear from you!</p>
+            <p class="subtext">
+              You can aslo send me an email directly, at
+              <br />
+              <br />
+              wick.kyle@gmail.com
+            </p>
+          </div>
+          <form
+            action="mailto:wick.kyle@gmail.com"
+            class="contact-form grid"
+            id="form-contact"
+          >
+            <input type="hidden" name="contact_number" />
+            <input
+              type="text"
+              name="name"
+              class="input"
+              id="name"
+              aria-label="Name Input"
+              placeholder="Your Name"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              class="input"
+              id="email"
+              aria-label="Email Input"
+              placeholder="Your Email"
+              required
+            />
+            <input
+              type="text"
+              name="subject"
+              class="input"
+              id="subject"
+              aria-activedescendant="Subject Matter Input"
+              placeholder="Subject"
+              required
+            />
+            <textarea
+              name="message"
+              class="input"
+              id="message"
+              aria-label="Custom Message Input"
+              placeholder="Message"
+              cols="30"
+              rows="10"
+              required
+            ></textarea>
+            <input
+              type="submit"
+              class="form-submit b-shadow b-blue"
+              value="Send"
+            />
+          </form>
         </div>
       </section>
     </main>
     <footer>
-      <section class="contact">
-        <div class="email">wick.kyle@gmail.com</div>
-        <div class="contact-links">
-          <a
-            href="https://www.linkedin.com/in/kyle-wick"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <img
-              class="contact-logo"
-              src="./logos/linkedin-logo.svg"
-              alt="Linked In Logo"
-            />
-          </a>
-        </div>
-        <div class="mute">KYLE WICK <span class="highlight">@2022</span></div>
-      </section>
+      <p class="subtext">Self-Taught, Self-Made</p>
+      <p class="subtext muted">@2022 Kyle Wick</p>
     </footer>
-
+    <div id="portal"></div>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+    ></script>
     <script src="./js/index.js"></script>
+    <script src="./js/util.js"></script>
+    <script src="./js/particles.js"></script>
   </body>
 </html>
