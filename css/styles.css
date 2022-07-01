@@ -66,12 +66,13 @@
 
 #particleSettings {
     backdrop-filter: blur(5px);
+    box-sizing: border-box;
     position: absolute;
-    left: -50%;
+    left: -75%;
     top: 2em;
     min-width: 400px;
     max-width: 25vw;
-    height: 1.5em;
+    height: 4em;
     padding: 1em;
     font-family: LeonSans-Light;
     transition:
@@ -100,8 +101,10 @@
 }
 
 .settings-wrapper {
-    overflow: hidden;
+    overflow: scroll;
     height: 100%;
+    padding: 0 1em;
+    scrollbar-track-color: blue;
 }
 
 .settings-header {
@@ -364,7 +367,7 @@
 
 @media screen and (max-width: 768px) {
 
-    #openPSettings, #particleSettings {
+    #bg-canvas, #openPSettings, #particleSettings {
         display: none;
     }
 
@@ -413,6 +416,7 @@
 
     .about-me {
         grid-row: 1;
+        padding: 0 1em;
     }
 
     .specialty {
