@@ -2,23 +2,20 @@
 
 ## General Info
 
-The first of many projects to come, which proved to be a great learning experience.
-The aim of this project was to challenge myself to commit to a project that will provide value
-to my future while learning a new technology -- Git.
+After a much needed redesign, the project much more closely matches what I originally set out to build: A fun little portfolio website built with the essentials, with my own twist added to the mix. The most current update to the site (the complete website overhaul) took me about 5 days in total of part time work, totalling to roughly 20 hours.
 
 ### Challenges
-Learning Git and implementing it into a project workflow.
+One of the hardest things to get a handle on was learning Git and implementing a workflow that works for me. My commits could use some work, but I am content with how the project handled.
 
 ### What I Learned
-I was able to become more aquainted with Git and its interface, and learned common branching strategies used when
-using Git with a clear separation of concerns.
+I was able to become more aquainted with Git and its interface, and learned common branching strategies. This project also forced me to look into areas of HTML, CSS and JavaScript that I've never heard of before, which was a huge eye-opener.
 
 ## Tech Used
 
-- HTML5
-- CSS3
+- HTML
+- CSS
 - JavaScript
 
 ## Running things locally
 
-The simplest way to get this running is to open the index.html file directly from with your OS file explorer.
+clone this repo or download the code, then open up the index.html file from your preferential location.
