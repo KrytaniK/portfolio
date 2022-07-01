@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
     --c-bg-prim: #171717;
     --c-bg-sec: #444444;
@@ -217,6 +218,39 @@ figure {
 
 .flex {
     display: flex;
+=======
+.highlight {
+    color: var(--color-text-hl);
+}
+
+.mute {
+    opacity: 60%;
+}
+
+.btn {
+    margin-top: 1rem;
+    background: none;
+    border: 2px solid var(--color-text);
+
+    text-shadow: inherit;
+
+    width: max-content;
+    height: max-content;
+
+    padding: .5rem 1rem;
+
+    font-family: var(--main-font);
+    font-size: 1.2rem;
+    color: var(--color-text);
+
+    transition: all .25s ease;
+}
+
+.btn:hover {
+    cursor: pointer;
+    border: 2px solid var(--color-secondary);
+    background-color: var(--color-secondary);
+>>>>>>> origin/master
 }
 
 .flex-wrap {
@@ -224,6 +258,7 @@ figure {
     flex-wrap: wrap;
 }
 
+<<<<<<< HEAD
 .flex-col {
     display: flex;
     flex-direction: column;
@@ -337,4 +372,13 @@ figure {
 
 .notif-active {
     right: 1em;
+=======
+.center {
+    justify-content: center;
+}
+
+.logo {
+    width: 5em;
+    height: 5em;
+>>>>>>> origin/master
 }

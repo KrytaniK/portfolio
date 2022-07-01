@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* --------- Notifications ---------- */
 
 const notifPortal = document.getElementById('portal');
@@ -78,10 +79,15 @@ const projectScrollTo = document.getElementById('projects-scrollTo'),
     contactScrollTo = document.getElementById('contact-scrollTo');
 
 projectScrollTo.addEventListener('click', (event) => {
+=======
+const viewWork = document.querySelector('#viewWork');
+viewWork.addEventListener('click', (event) => {
+>>>>>>> origin/master
     event.preventDefault();
     ScrollTo('.projects');
 });
 
+<<<<<<< HEAD
 aboutScrollTo.addEventListener('click', (event) => {
     event.preventDefault();
     ScrollTo('.about');
@@ -111,3 +117,9 @@ closePSettingsButton.addEventListener('click', (event) => {
     openPSettingsButton.classList.remove('is-animated');
     PSettingsMenu.classList.remove('is-animated');
 });
+=======
+function ScrollTo(className) {
+    const element = document.querySelector(className);
+    element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+}
+>>>>>>> origin/master
